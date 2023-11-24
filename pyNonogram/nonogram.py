@@ -2,7 +2,7 @@
 from nonogram_grid import NonogramGrid
 
 #Built-in imports
-from typing import Optional
+from typing import Optional, Union
 import os
 
 #External imports
@@ -159,7 +159,7 @@ class Nonogram:
         #loads it
         self.load(os.path.join(self.path, _file))
     
-    def load_grid(self):
+    def load_grid(self) -> None:
         """Loads the nonogram grid object.
 
         :raises Exception: Nonogram not loaded.
@@ -168,7 +168,7 @@ class Nonogram:
             raise Exception('Nonogram not loaded')
         self.grid = NonogramGrid((self.height, self.width))
     
-    def save_solution(self):
+    def save_solution(self) -> None:
         """Saves current grid state as solution in nonogram file at self.path.
         
         :raises Exception: When path and self.path are None.
@@ -195,7 +195,7 @@ class Nonogram:
             with open(self.path, 'a') as f:
                 f.write(f"{self.solution}")
     
-    def load_solution(self):
+    def load_solution(self) -> None:
         """Loads solution from nonogram file at self.path.
 
         :raises Exception: Nonogram not loaded.
@@ -320,3 +320,5 @@ class Nonogram:
             row_str = row_str.replace('1', u'\u2588'*col_space)
             
             print(row_str)
+
+NonogramType = Union[Nonogram, object]
