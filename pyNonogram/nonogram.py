@@ -50,7 +50,7 @@ class Nonogram:
         
         self.grid = None
         
-    def load(self, path: Optional[str]) -> None:
+    def load(self, path: Optional[str] = None) -> None:
         """Loads a nonogram from a file.
 
         :param path: Path to nonogram file (.non)
@@ -80,7 +80,7 @@ class Nonogram:
             raise Exception('Invalid file format (Expected .non got {})'.format(self.path.split('.')[-1]))
 
         #reads file
-        with open(path, 'r') as f:
+        with open(self.path, 'r') as f:
             data = f.readlines()
 
         #checks if file has 9 lines (author, date, picture, difficulty, width, height, rows, columns, solution)
@@ -184,11 +184,11 @@ class Nonogram:
         self.solution = ""
         for y in range(self.height):
             for x in range(self.width):
-                if self.get_cell(x,y) == 0:
+                if self.grid.get_cell(x,y) == 0:
                     raise RuntimeError('Nonogram is not solved')
-                elif self.get_cell(x,y) == 1:
+                elif self.grid.get_cell(x,y) == 1:
                     self.solution += "1"
-                elif self.get_cell(x,y) == -1:
+                elif self.grid.get_cell(x,y) == -1:
                     self.solution += "0"
         if self.solved == False:
             self.solved = True
@@ -212,6 +212,64 @@ class Nonogram:
                     self.grid.set_cell(x, y, 1)
                 elif self.solution[y][x] == 0:
                     self.grid.set_cell(x, y, -1)
+    
+    def check_row(self, y: int) -> bool:
+        """Checks if a row is solved.
+
+        :param y: y coordinate of row
+        :type y: int
+        :return: True if row is solved, False otherwise.
+        :rtype: bool
+        """        
+        segments = self.grid.get_row_segments(y)
+        #if number of segments is not equal to number of hints, row is not solved
+        if len(segments) != len(self.rows[y]):
+            return False
+        #if all segments are equal to their corresponding hint, row is solved
+        if np.all(segments == self.rows[y]):
+            return True
+        #otherwise row is not solved
+        return False
+    
+    def check_col(self, x: int) -> bool:
+        """Checks if a column is solved.
+
+        :param x: x coordinate of column
+        :type x: int
+        :return: True if column is solved, False otherwise.
+        :rtype: bool
+        """        
+        segments = self.grid.get_col_segments(x)
+        if len(segments) != len(self.columns[x]):
+            return False
+        if np.all(segments == self.columns[x]):
+            return True
+        return False
+    
+    def check_all(self) -> bool:
+        """Checks if all rows and columns are solved.
+
+        :return: True if all rows and columns are solved, False otherwise.
+        :rtype: bool
+        """
+        #if any row or column is not solved, nonogram is not solved
+        for y in range(self.height):
+            res = self.check_row(y)
+            if not res:
+                return False
+        for x in range(self.width):
+            res = self.check_col(x)
+            if not res:
+                return False
+        return True
+    
+    def is_solved(self) -> bool:
+        """Is nonogram solved.
+
+        :return: True if nonogram is solved, False otherwise.
+        :rtype: bool
+        """        
+        return self.check_all()
 
     def print(self) -> None:
         """Prints the nonogram to the console.

@@ -1,5 +1,5 @@
 #Built-in imports
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 
 #External imports
 import numpy as np
@@ -74,7 +74,7 @@ class NonogramGrid(np.ndarray):
         """        
         return self[:,x]
     
-    def fill_row(self, y: int, value: int, with_overwritting: bool = True) -> None:
+    def fill_row(self, y: int, value: int, with_overwritting: Optional[bool] = True) -> None:
         """Fills a row with a value.
 
         :param y: y coordinate of row
@@ -88,7 +88,7 @@ class NonogramGrid(np.ndarray):
             if with_overwritting or self[y,x] == 0:
                 self.set_cell(x, y, value)
     
-    def fill_col(self, x: int, value: int, with_overwritting: bool = True) -> None:
+    def fill_col(self, x: int, value: int, with_overwritting: Optional[bool] = True) -> None:
         """Fills a column with a value.
 
         :param x: x coordinate of column
@@ -137,64 +137,6 @@ class NonogramGrid(np.ndarray):
         segments = list(filter(lambda x: len(x) > 0, col_str))
         segments = list(map(len, segments))
         return segments
-    
-    def check_row(self, y: int) -> bool:
-        """Checks if a row is solved.
-
-        :param y: y coordinate of row
-        :type y: int
-        :return: True if row is solved, False otherwise.
-        :rtype: bool
-        """        
-        segments = self.get_row_segments(y)
-        #if number of segments is not equal to number of hints, row is not solved
-        if len(segments) != len(self.rows[y]):
-            return False
-        #if all segments are equal to their corresponding hint, row is solved
-        if np.all(segments == self.rows[y]):
-            return True
-        #otherwise row is not solved
-        return False
-    
-    def check_col(self, x: int) -> bool:
-        """Checks if a column is solved.
-
-        :param x: x coordinate of column
-        :type x: int
-        :return: True if column is solved, False otherwise.
-        :rtype: bool
-        """        
-        segments = self.get_col_segments(x)
-        if len(segments) != len(self.columns[x]):
-            return False
-        if np.all(segments == self.columns[x]):
-            return True
-        return False
-    
-    def check_all(self) -> bool:
-        """Checks if all rows and columns are solved.
-
-        :return: True if all rows and columns are solved, False otherwise.
-        :rtype: bool
-        """
-        #if any row or column is not solved, nonogram is not solved
-        for y in range(self.shape[0]):
-            res = self.check_row(y)
-            if not res:
-                return False
-        for x in range(self.shape[1]):
-            res = self.check_col(x)
-            if not res:
-                return False
-        return True
-    
-    def is_solved(self) -> bool:
-        """Is nonogram solved.
-
-        :return: True if nonogram is solved, False otherwise.
-        :rtype: bool
-        """        
-        return self.check_all()
     
     def __str__(self) -> str:
         """Returns string representation of NonogramGrid.
