@@ -2,8 +2,6 @@
 /include
 /lib
 /share
-pyvenv.cfg
-__pycache__
 cache
 nonograms
 pictures
