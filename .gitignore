@@ -6,3 +6,5 @@ cache
 nonograms
 pictures
 **/.DS_Store
+**/main.py
+**/pyvenv.cfg
