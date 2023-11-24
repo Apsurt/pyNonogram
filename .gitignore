@@ -1,7 +1,8 @@
-/bin
-/include
-/lib
-/share
+**/bin
+**/include
+**/lib
+**/share
 cache
 nonograms
 pictures
+**/.DS_Store
