@@ -23,5 +23,4 @@ Guidelines on how to contribute to the project.
 
 ## License
 
-Information about the project's license.
-
+This project is licensed under the [MIT License](LICENSE).
