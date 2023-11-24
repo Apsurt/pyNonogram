@@ -1,48 +1,13 @@
 from itertools import combinations
 from operator import add
-import torch
 
 class Solver:
-    def __init__(self, game, **kwargs) -> None:
+    def __init__(self, game) -> None:
         self.game = game
-        self.init_kwargs(**kwargs)
-        self.init_pytorch()
-    
-    def init_kwargs(self, **kwargs):
-        if "warnings" in kwargs:
-            self.warnings = kwargs["warnings"]
-        else:
-            self.warnings = True
-        if "gpu_enabled" in kwargs:
-            self.gpu_enabled = kwargs["gpu_enabled"]
-            if self.warnings:
-                if self.game.width * self.game.height < 1000:
-                    raise Warning("GPU is not recommended for small puzzles")
-        else:
-            self.gpu_enabled = False
-    
-    def init_pytorch(self):
-        if torch.cuda.is_available() and self.gpu_enabled:
-            self.device = torch.device("cuda")
-        elif torch.backends.mps.is_available() and torch.backends.mps.is_built() and self.gpu_enabled:
-            self.device = torch.device("mps")
-        else:
-            self.device = torch.device("cpu")
     
     def generate_all_possibilities(self):
-        if self.gpu_enabled:
-            self.rows_possibilities = self._generate_all_possibilities(self.game.rows, self.game.width)
-            for idx, row in enumerate(self.rows_possibilities):
-                self.rows_possibilities[idx] = torch.tensor(row).to(self.device)
-            self.cols_possibilities = self._generate_all_possibilities(self.game.columns, self.game.height)
-            for idx, col in enumerate(self.cols_possibilities):
-                self.cols_possibilities[idx] = torch.tensor(col).to(self.device)
-        else:
-            self.rows_possibilities = self._generate_all_possibilities(self.game.rows, self.game.width)
-            self.cols_possibilities = self._generate_all_possibilities(self.game.columns, self.game.height)
-    
-    def _generate_all_possibilities_wrapper(self, func):
-        pass
+        self.rows_possibilities = self._generate_all_possibilities(self.game.rows, self.game.width)
+        self.cols_possibilities = self._generate_all_possibilities(self.game.columns, self.game.height)
     
     def _generate_all_possibilities(self, values, size):
         possibilities = []
@@ -127,18 +92,6 @@ class Solver:
                 for p in col:
                     if not self.is_possible(actual, p):
                         self.cols_possibilities[x].remove(p)
-    
-    def is_possible_gpu(self, actual, possibilities):
-        pass
-    
-    def _remove_possibilities_gpu(self):
-        pass
-        #rows
-        actual_rows = torch.tensor(self.game.grid).to(self.device)
-        print(actual_rows)
-        print(self.rows_possibilities)
-        #cols
-        actual_cols = torch.tensor(self.game.grid.T).to(self.device)
 
     def remove_possibilities(self):
         if self.gpu_enabled:
