@@ -1,3 +1,4 @@
+#External imports
 import matplotlib.pyplot as plt
 
 class Display:

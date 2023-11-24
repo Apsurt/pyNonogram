@@ -2,8 +2,8 @@
 from nonogram_grid import NonogramGrid
 
 #Built-in imports
-from typing import Optional, Union
 import os
+from typing import Optional, Union
 
 #External imports
 import numpy as np
