@@ -51,6 +51,10 @@ class Browser:
             builder.click(element)
         builder.perform()
     
+    def send_keys(self, by: Literal['ID', 'XPATH'], value: str, keys: str) -> None:
+        element = self.get_element(by, value)
+        element.send_keys(keys)
+    
     def maximize(self) -> None:
         self.driver.maximize_window()
 
