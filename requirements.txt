@@ -1,4 +1,2 @@
 numpy>=1.19.5
-matplotlib>=3.3.4
-beautifulsoup4>=4.8.1
-selenium>=4.0.0
+pytest>=6.2.4
