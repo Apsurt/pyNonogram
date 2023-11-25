@@ -3,9 +3,6 @@
 **/lib
 **/share
 cache
-nonograms
-pictures
 **/.DS_Store
-**/main.py
 **/pyvenv.cfg
 **/__pycache__
