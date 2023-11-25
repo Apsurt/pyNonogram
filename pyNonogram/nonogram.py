@@ -287,9 +287,6 @@ class Nonogram:
         
         #get spacing between columns
         col_space = len(str(np.max(list(map(np.max, self.columns)))))+1
-        
-        #print path
-        print(self.path)
             
         for i in range(max_col_len):
             #print empty space in left upper corner
@@ -315,8 +312,8 @@ class Nonogram:
             #print board
             row = self.grid.get_row(y)
             row_str = ''.join(map(str, row))
-            row_str = row_str.replace('0', '-'*col_space)
-            row_str = row_str.replace('-1', ' '*col_space)
+            row_str = row_str.replace('0', ' '*col_space)
+            row_str = row_str.replace('-1', '-'*col_space)
             row_str = row_str.replace('1', u'\u2588'*col_space)
             
             print(row_str)
