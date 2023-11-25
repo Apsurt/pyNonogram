@@ -10,7 +10,6 @@ class Scraper:
             raise ValueError("Mode is not valid")
         
         self.browser = Browser(False)
-        self.browser.maximize()
         self.mode = mode
         self.url = url
         self.html = self.get_html()
