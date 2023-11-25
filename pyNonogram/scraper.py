@@ -1,5 +1,6 @@
+from browser import Browser
+
 from bs4 import BeautifulSoup
-from selenium import webdriver
 
 class Scraper:
     def __init__(self, mode, url) -> None:
@@ -7,10 +8,14 @@ class Scraper:
             raise ValueError("URL is not from nonograms.org")
         if not mode in ["page", "list"]:
             raise ValueError("Mode is not valid")
+        
+        self.browser = Browser(False)
+        self.browser.maximize()
         self.mode = mode
         self.url = url
         self.html = self.get_html()
         self.soup = self.get_soup()
+        
         try:
             if self.soup.find("div", {"class": "content"}).find("h1").find("span").text == "Error 404":
                 raise ValueError("URL is not valid")
@@ -18,11 +23,7 @@ class Scraper:
             pass
     
     def get_html(self):
-        driver = webdriver.Safari()
-        driver.get(self.url)
-        html = driver.page_source
-        driver.quit()
-        return html
+        return self.browser.get_html(self.url)
 
     def get_soup(self):
         try:
@@ -184,10 +185,3 @@ class Scraper:
                     code = link.split("/")[-1]
                     codes.append(code)
         return codes
-
-def main():
-    sc = Scraper("list", "https://www.nonograms.org/search?name=&colors=1&colors_min=1&colors_max=10&width_min=0&width_max=30&height_min=0&height_max=30&rating_min=1&rating_max=10&complexity_min=1&complexity_max=10&coloring_min=0&coloring_max=100&symmetry_min=0&symmetry_max=100&numgrid_min=0&numgrid_max=50&sort=4")
-    print(sc.get_codes_from_list())
-    
-if __name__ == "__main__":
-    main()
