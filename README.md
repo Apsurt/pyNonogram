@@ -16,6 +16,7 @@ It is my first package thus, reporting issues and pull request are more than app
 ## Installation
 
 Install with pip:
+
 ```
 pip install pyNonogram
 ```
@@ -25,6 +26,7 @@ pip install pyNonogram
 ### File extension (.non)
 
 Example .non file:
+
 ```
 author:Apsurt
 date:25.11.23
@@ -36,6 +38,7 @@ rows:1 3 5 1,1 1,1
 columns:1 4 3 4 1
 solution:
 ```
+
 Note that there is no space before or after the colon. Separate row or column hints are separated by space character, whereas hints in the same row or column are separated with coma. For row hints in sequence are from left to right, for columns from top to bottom.
 
 ### Code example
