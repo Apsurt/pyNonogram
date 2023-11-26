@@ -45,6 +45,10 @@ class Publish(Command):
         print('All done!')
         sys.exit()
 
+long_description = ''
+
+with open('README.md', encoding='utf-8') as f:
+    long_description = f.read()
 
 test_requirements = ['pytest>=3.0.3']
 
@@ -60,7 +64,8 @@ if sys.version_info.minor < 5:
 setup(name='pyNonogram',
       version='0.0.1',
       description='Description under construction',
-      long_description='Long description under construction',
+      long_description=long_description,
+      long_description_content_type='text/markdown',
       url='https://github.com/Apsurt/pyNonogram',
       author='Tymon Becella',
       author_email='tymon.becella@gmail.com',
