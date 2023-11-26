@@ -60,13 +60,12 @@ if os.path.isfile('requirements.txt'):
 if sys.version_info.minor < 5:
     requirements.append('typing>=3.5.2.2')
 
-with open('README.md', encoding='utf-8') as f:
-    long_description = f.read()
+#with open('README.md', encoding='utf-8') as f:
+#    long_description = f.read()
 
 setup(name='pyNonogram',
       version='0.0.1',
-      description='',
-      long_description=long_description,
+      description='Description under construction',
       url='https://github.com/Apsurt/pyNonogram',
       author='Tymon Becella',
       author_email='tymon.becella@gmail.com',
