@@ -2,14 +2,12 @@ from setuptools import setup, find_packages
 # noinspection PyPep8Naming
 from setuptools.command.test import test as TestCommand
 from setuptools import Command
-from subprocess import call
 from codecs import open
 import os
 import sys
 
 if sys.version_info.major < 3:
     sys.exit('Python 2 is not supported')
-
 
 # noinspection PyCallByClass,PyAttributeOutsideInit
 class PyTest(TestCommand):
@@ -28,7 +26,6 @@ class PyTest(TestCommand):
         import pytest
         errno = pytest.main(self.pytest_args)
         sys.exit(errno)
-
 
 class Publish(Command):
     description = 'Automate all the boring stuff when releasing the package'
@@ -60,12 +57,10 @@ if os.path.isfile('requirements.txt'):
 if sys.version_info.minor < 5:
     requirements.append('typing>=3.5.2.2')
 
-#with open('README.md', encoding='utf-8') as f:
-#    long_description = f.read()
-
 setup(name='pyNonogram',
       version='0.0.1',
       description='Description under construction',
+      long_description='Long description under construction',
       url='https://github.com/Apsurt/pyNonogram',
       author='Tymon Becella',
       author_email='tymon.becella@gmail.com',
