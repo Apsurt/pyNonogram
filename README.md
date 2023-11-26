@@ -1,6 +1,6 @@
 # pyNonogram
 
-Framework for puzzle game *Nonogram*. It was made thinking about projects that aim to solve puzzles. I wanted to create comprahensive library that would take some work of nonogram developers' shoulders.
+Framework for puzzle game *Nonogram*. It was made thinking about projects that aim to solve puzzles. I wanted to create comprehensive library that would take some work of nonogram developers' shoulders.
 
 It is my first package thus, reporting issues and pull request are more than appreciated.
 
