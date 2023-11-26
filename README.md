@@ -50,6 +50,7 @@ my_nonogram.grid.fill_row(2, 1)
 
 my_nonogram.print()
 ```
+
 For more elaborate examples check out [GitHub](https://github.com/Apsurt/pyNonogram/tree/main/examples)
 
 ## Contributing
