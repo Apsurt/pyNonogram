@@ -40,7 +40,7 @@ Note that there is no space before or after the colon. Separate row or column hi
 
 ### Code example
 
-```python
+```
 from pyNonogram import Nonogram
 
 my_nonogram = Nonogram()
