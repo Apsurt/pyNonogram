@@ -8,3 +8,6 @@ cache
 **/__pycache__
 **/docs
 **/tests
+**/build
+**/dist
+**/*.egg-info
