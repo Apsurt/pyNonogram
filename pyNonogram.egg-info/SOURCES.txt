@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+requirements.txt
+setup.cfg
+setup.py
+pyNonogram/___init___.py
+pyNonogram/errors.py
+pyNonogram/nonogram.py
+pyNonogram/nonogram_grid.py
+pyNonogram.egg-info/PKG-INFO
+pyNonogram.egg-info/SOURCES.txt
+pyNonogram.egg-info/dependency_links.txt
+pyNonogram.egg-info/requires.txt
+pyNonogram.egg-info/top_level.txt

@@ -7,5 +7,4 @@ cache
 **/pyvenv.cfg
 **/__pycache__
 **/docs
-**/examples
 **/tests

@@ -1,5 +1,5 @@
 #Internal imports
-from nonogram_grid import NonogramGrid
+from .nonogram_grid import NonogramGrid
 
 #Built-in imports
 import os

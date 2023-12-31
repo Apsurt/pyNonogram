@@ -1,3 +1,24 @@
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+[project]
+name = "pyNonogram"
+version = "0.0.1"
+authors = [
+  { name="Tymon Becella", email="tymon@becella.eu" },
+]
+description = "Description under construction"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+license = { file = "LICENSE" }
+keywords = ["nonogram", "nonograms", "griddlers", "picross", "pic-a-pix", "paintbynumbers", "puzzle", "puzzles"]
+dependencies = ["numpy>=1.19.5", "pytest>=6.2.4"]
+
+[project.urls]
+Homepage = "https://github.com/Apsurt/pyNonogram/"
+Issues = "https://github.com/Apsurt/pyNonogram/issues"

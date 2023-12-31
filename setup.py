@@ -89,7 +89,7 @@ setup(name='pyNonogram',
           'Programming Language :: Python :: Implementation :: PyPy'
       ],
       keywords='nonogram nonograms griddlers picross pic-a-pix paintbynumbers puzzle puzzles',
-      packages=find_packages(include=['pyNonogram'], exclude=['tests', 'docs', 'examples']),
+      packages=['pyNonogram'],
       install_requires=requirements,
       cmdclass={'test': PyTest, 'publish': Publish},
       tests_require=test_requirements,
