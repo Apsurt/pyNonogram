@@ -112,7 +112,6 @@ class Nonogram:
         for idx in range(len(self.columns)):
             self.columns[idx] = self.columns[idx].split(',')
             self.columns[idx] = list(map(int, self.columns[idx]))
-        
         #ninth line: solution
         self.solution = data[8].split(':')[1].strip('\n')
         self.solution = list(map(''.join, zip(*[iter(self.solution)]*self.width)))
@@ -122,6 +121,8 @@ class Nonogram:
         if len(self.solution) == 0:
             self.solution = None
             self.solved = False
+        else:
+            self.solved = True
         
         self.is_loaded = True
         

@@ -6,7 +6,6 @@ from pyNonogram.nonogram import Nonogram
 def main():
     nonogram = Nonogram()
     nonogram.load("examples/flower.non")
-    print(nonogram.is_solved())
     nonogram.load_solution()
     print("Author: " + nonogram.author)
     print("Date: " + nonogram.date)
@@ -16,6 +15,7 @@ def main():
     print("Height: " + str(nonogram.height))
     print("Rows: " + str(nonogram.rows))
     print("Columns: " + str(nonogram.columns))
+    print("Solution: " + str(nonogram.solution))
     nonogram.print()
 
 if __name__ == "__main__":
