@@ -29,14 +29,14 @@ Example .non file:
 
 ```
 author:Apsurt
-date:25.11.23
-picture:3
+date:31.12.23
+picture:2
 difficulty:2
 width:5
 height:5
-rows:1 3 5 1,1 1,1
-columns:1 4 3 4 1
-solution:
+rows:1 3 2,2 3 1 1
+columns:1 3 2,3 3 1
+solution:001000111011011011100010000100
 ```
 
 Note that there is no space before or after the colon. Separate row or column hints are separated by space character, whereas hints in the same row or column are separated with coma. For row hints in sequence are from left to right, for columns from top to bottom.
