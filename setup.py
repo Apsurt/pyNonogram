@@ -52,7 +52,7 @@ with open('README.md', encoding='utf-8') as f:
 
 test_requirements = ['pytest>=3.0.3']
 
-requirements = ['PyYAML>=3.11', 'jsonpickle>=0.9.3']
+requirements = []
 
 if os.path.isfile('requirements.txt'):
     with open('requirements.txt', encoding='utf-8') as f:
@@ -89,7 +89,7 @@ setup(name='pyNonogram',
           'Programming Language :: Python :: Implementation :: PyPy'
       ],
       keywords='nonogram nonograms griddlers picross pic-a-pix paintbynumbers puzzle puzzles',
-      packages=find_packages(exclude=['tests', 'docs', 'examples']),
+      packages=find_packages(include=['pyNonogram'], exclude=['tests', 'docs', 'examples']),
       install_requires=requirements,
       cmdclass={'test': PyTest, 'publish': Publish},
       tests_require=test_requirements,
