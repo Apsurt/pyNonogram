@@ -3,11 +3,12 @@
 ### Todo
 
 - [ ] Add tests
+- [ ] Add errors
 - [ ] Add more examples
-- [ ] Add documentation
 
 ### In Progress
 
+- [ ] Add documentation page
 - [ ] Add sphinx docstrings
 
 ### Done ✓
