@@ -7,7 +7,7 @@ It is my first package thus, reporting issues and pull request are more than app
 ## Table of Contents
 
 - [Installation](#installation)
-- [Documentation] (#documentation)
+- [Documentation](#documentation)
 - [Usage](#usage)
     - [File extension](#file-extension-non)
     - [Code example](#code-example)
