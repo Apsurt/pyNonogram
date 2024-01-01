@@ -7,7 +7,7 @@ import numpy as np
 class NonogramGrid(np.ndarray):
     """NonogramGrid class, used to store nonogram grid data.
 
-    .. notes:: Inherits from :class:`numpy.ndarray`
+    .. note:: Inherits from :class:`numpy.ndarray`
     """    
     def __new__(cls, *args, **kwargs) -> np.ndarray:
         """Creates a new NonogramGrid object.
