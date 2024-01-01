@@ -62,7 +62,7 @@ if sys.version_info.minor < 5:
     requirements.append('typing>=3.5.2.2')
 
 setup(name='pyNonogram',
-      version='0.1.0',
+      version='0.1.1',
       description='Description under construction',
       long_description=long_description,
       long_description_content_type='text/markdown',

@@ -1,5 +1,5 @@
 #Internal imports
-from .nonogram_grid import NonogramGrid
+import pyNonogram.nonogram_grid
 
 #Built-in imports
 import os
@@ -167,7 +167,7 @@ class Nonogram:
         """        
         if not self.is_loaded:
             raise Exception('Nonogram not loaded')
-        self.grid = NonogramGrid((self.height, self.width))
+        self.grid = pyNonogram.nonogram_grid.NonogramGrid((self.height, self.width))
     
     def save_solution(self) -> None:
         """Saves current grid state as solution in nonogram file at self.path.
