@@ -62,8 +62,8 @@ if sys.version_info.minor < 5:
     requirements.append('typing>=3.5.2.2')
 
 setup(name='pyNonogram',
-      version='0.2.0',
-      description='Description under construction',
+      version='0.2.1',
+      description='Nonogram framework for Python',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/Apsurt/pyNonogram',
