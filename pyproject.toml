@@ -7,7 +7,7 @@ version = "0.2.1"
 authors = [
   { name="Tymon Becella", email="tymon@becella.eu" },
 ]
-description = "Description under construction"
+description = "Nonogram framework for Python"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
