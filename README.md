@@ -7,6 +7,7 @@ It is my first package thus, reporting issues and pull request are more than app
 ## Table of Contents
 
 - [Installation](#installation)
+- [Documentation](#documentation)
 - [Usage](#usage)
     - [File extension](#file-extension-non)
     - [Code example](#code-example)
@@ -15,11 +16,15 @@ It is my first package thus, reporting issues and pull request are more than app
 
 ## Installation
 
-Install with pip:
+Install with [pip](https://pypi.org/project/pyNonogram/):
 
 ```
 pip install pyNonogram
 ```
+
+## Documentation
+
+The documentation is available [here](https://apsurt.github.io/pyNonogram-docs/)
 
 ## Usage
 
@@ -39,7 +44,7 @@ columns:1 3 2,3 3 1
 solution:001000111011011011100010000100
 ```
 
-Note that there is no space before or after the colon. Separate row or column hints are separated by space character, whereas hints in the same row or column are separated with coma. For row hints in sequence are from left to right, for columns from top to bottom.
+Note that there is no space before nor after the colon. Separate row or column hints are separated by space character, whereas hints in the same row or column are separated with coma. For row hints in sequence are from left to right, for columns from top to bottom.
 
 ### Code example
 

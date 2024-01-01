@@ -8,8 +8,7 @@
 
 ### In Progress
 
-- [ ] Add documentation page
-- [ ] Add sphinx docstrings
+- [ ] Add sphinx docstrings in vs code
 
 ### Done ✓
 
@@ -19,3 +18,4 @@
 - [x] Build package
 - [x] Publish package
 - [x] Add basic examples
+- [x] Add documentation page
