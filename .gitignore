@@ -1,6 +1,7 @@
 **/bin
 **/build
 **/dist
+**/docs
 **/include
 **/lib
 **/*.egg-info
