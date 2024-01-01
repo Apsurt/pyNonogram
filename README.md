@@ -7,6 +7,7 @@ It is my first package thus, reporting issues and pull request are more than app
 ## Table of Contents
 
 - [Installation](#installation)
+- [Documentation] (#documentation)
 - [Usage](#usage)
     - [File extension](#file-extension-non)
     - [Code example](#code-example)
@@ -20,6 +21,10 @@ Install with pip:
 ```
 pip install pyNonogram
 ```
+
+## Documentation
+
+The documentation is available [here](https://apsurt.github.io/pyNonogram-docs/)
 
 ## Usage
 
