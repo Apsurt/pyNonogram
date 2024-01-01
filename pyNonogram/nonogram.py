@@ -1,5 +1,6 @@
 #Internal imports
 import pyNonogram.nonogram_grid
+import pyNonogram.errors
 
 #Built-in imports
 import os
@@ -21,7 +22,7 @@ class Nonogram:
     def __init__(self, **kwargs) -> None:
         """Creates a new Nonogram object.
 
-        :raises Exception: Invalid path when path is neither file nor directory.
+        :raises PathException: Invalid path when path is neither file nor directory.
         """        
         self.path = None
         self.path_type = None
@@ -32,7 +33,7 @@ class Nonogram:
             elif os.path.isdir(self.path):
                 self.path_type = 'dir'
             else:
-                raise Exception('Invalid path')
+                raise pyNonogram.errors.PathException('Invalid path')
         
         #declare variables
         self.author = None
@@ -55,11 +56,11 @@ class Nonogram:
 
         :param path: Path to nonogram file (.non)
         :type path: Optional[str]
-        :raises Exception: Invalid path when path is neither file nor directory.
-        :raises Exception: When path and self.path are None.
-        :raises Exception: Invalid path type when path is not a file.
-        :raises Exception: Invalid file format when file does not end with (.non)
-        :raises Exception: Invalid file format when file does not have 9 lines.
+        :raises PathException: Invalid path when path is neither file nor directory.
+        :raises PathException: When path and self.path are None.
+        :raises PathException: Invalid path type when path is not a file.
+        :raises UnknownFormat: Invalid file format when file does not end with (.non)
+        :raises UnknownFormat: Invalid file format when file does not have 9 lines.
         """        
         if path is not None:
             self.path = path
@@ -68,16 +69,16 @@ class Nonogram:
             elif os.path.isdir(self.path):
                 self.path_type = 'dir'
             else:
-                raise Exception('Invalid path')
+                raise pyNonogram.errors.PathException('Invalid path')
         
         if self.path is None:
-            raise Exception('Path not specified')
+            raise pyNonogram.errors.PathException('Path not specified')
 
         if self.path_type != 'file':
-            raise Exception('Invalid path type. (Expected file got {})'.format(self.path_type))
+            raise pyNonogram.errors.PathException('Invalid path type. (Expected file got {})'.format(self.path_type))
 
         if not self.path.endswith('.non'):
-            raise Exception('Invalid file format (Expected .non got {})'.format(self.path.split('.')[-1]))
+            raise pyNonogram.errors.UnknownFormat('Invalid file format (Expected .non got {})'.format(self.path.split('.')[-1]))
 
         #reads file
         with open(self.path, 'r') as f:
@@ -86,7 +87,7 @@ class Nonogram:
         #checks if file has 9 lines (author, date, picture, difficulty, width, height, rows, columns, solution)
         #this is the structure of a nonogram file (.non)
         if len(data) != 9:
-            raise Exception('Invalid file format')
+            raise pyNonogram.errors.UnknownFormat('Invalid file format')
         
         #first line: author
         self.author = data[0].split(':')[1].strip('\n')
@@ -134,9 +135,9 @@ class Nonogram:
 
         :param path: Path to directory with nonogram files (.non)
         :type path: Optional[str]
-        :raises Exception: Invalid path when path is neither file nor directory.
-        :raises Exception: When path and self.path are None.
-        :raises Exception: Invalid path type when path is not a directory.
+        :raises PathException: Invalid path when path is neither file nor directory.
+        :raises PathException: When path and self.path are None.
+        :raises PathException: Invalid path type when path is not a directory.
         """        
         if path is not None:
             self.path = path
@@ -145,13 +146,13 @@ class Nonogram:
             elif os.path.isdir(self.path):
                 self.path_type = 'dir'
             else:
-                raise Exception('Invalid path')
+                raise pyNonogram.errors.PathException('Invalid path')
         
         if self.path is None:
-            raise Exception('Path not specified')
+            raise pyNonogram.errors.PathException('Path not specified')
 
         if self.path_type != 'dir':
-            raise Exception('Invalid path type. (Expected dir got {})'.format(self.path_type))
+            raise pyNonogram.errors.PathException('Invalid path type. (Expected dir got {})'.format(self.path_type))
         
         #gets random file from directory
         files = os.listdir(self.path)
@@ -163,30 +164,30 @@ class Nonogram:
     def load_grid(self) -> None:
         """Loads the nonogram grid object.
 
-        :raises Exception: Nonogram not loaded.
+        :raises LoadingException: Nonogram not loaded.
         """        
         if not self.is_loaded:
-            raise Exception('Nonogram not loaded')
+            raise pyNonogram.errors.LoadingException('Nonogram not loaded')
         self.grid = pyNonogram.nonogram_grid.NonogramGrid((self.height, self.width))
     
     def save_solution(self) -> None:
         """Saves current grid state as solution in nonogram file at self.path.
         
-        :raises Exception: When path and self.path are None.
-        :raises Exception: Invalid path type when path is not a file.
-        :raises RuntimeError: _description_
+        :raises PathException: When path and self.path are None.
+        :raises PathException: Invalid path type when path is not a file.
+        :raises NotSolved: Nonogram is not solved.
         """
         if self.path is None:
-            raise Exception('Path not specified')
+            raise pyNonogram.errors.PathException('Path not specified')
 
         if self.path_type != 'file':
-            raise Exception('Invalid path type. (Expected file got {})'.format(self.path_type))
+            raise pyNonogram.errors.PathException('Invalid path type. (Expected file got {})'.format(self.path_type))
         #iterate over grid and save solution
         self.solution = ""
         for y in range(self.height):
             for x in range(self.width):
                 if self.grid.get_cell(x,y) == 0:
-                    raise RuntimeError('Nonogram is not solved')
+                    raise pyNonogram.errors.NotSolved('Nonogram is not solved')
                 elif self.grid.get_cell(x,y) == 1:
                     self.solution += "1"
                 elif self.grid.get_cell(x,y) == -1:
@@ -199,13 +200,13 @@ class Nonogram:
     def load_solution(self) -> None:
         """Loads solution from nonogram file at self.path.
 
-        :raises Exception: Nonogram not loaded.
-        :raises Exception: Nonogram is not solved or has no solution.
+        :raises NotLoaded: Nonogram not loaded.
+        :raises NotSolved: Nonogram is not solved or has no solution.
         """        
         if not self.is_loaded:
-            raise Exception('Nonogram not loaded')
+            raise pyNonogram.errors.NotLoaded('Nonogram not loaded')
         if self.solution is None or self.solved == False:
-            raise Exception('Nonogram has no solution')
+            raise pyNonogram.errors.NotSolved('Nonogram has no solution')
         #iterate over solution and load it into grid
         for y in range(self.height):
             for x in range(self.width):
@@ -275,10 +276,10 @@ class Nonogram:
     def print(self) -> None:
         """Prints the nonogram to the console.
 
-        :raises Exception: Nonogram not loaded.
+        :raises NotLoaded: Nonogram not loaded.
         """        
         if not self.is_loaded:
-            raise Exception('Nonogram not loaded')
+            raise pyNonogram.errors.NotLoaded('Nonogram not loaded')
         if self.grid is None:
             self.load_grid()
         

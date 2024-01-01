@@ -3,7 +3,6 @@
 ### Todo
 
 - [ ] Add tests
-- [ ] Add errors
 - [ ] Add more examples
 
 ### In Progress
@@ -19,3 +18,4 @@
 - [x] Publish package
 - [x] Add basic examples
 - [x] Add documentation page
+- [x] Add errors
