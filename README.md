@@ -16,7 +16,7 @@ It is my first package thus, reporting issues and pull request are more than app
 
 ## Installation
 
-Install with pip:
+Install with [pip](https://pypi.org/project/pyNonogram/):
 
 ```
 pip install pyNonogram
