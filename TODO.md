@@ -5,9 +5,8 @@
 
 ### In Progress
 
-- [ ] Add sphinx docstrings in vs code
 
-### Done ✓
+### Done ✅
 
 - [x] Create framework
 - [x] Add typing
@@ -19,3 +18,7 @@
 - [x] Add errors
 - [x] Add tests
 - [x] Add more examples
+
+### Abandoned ❌
+
+- [ ] Add sphinx docstrings in vs code

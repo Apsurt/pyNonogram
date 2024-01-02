@@ -1,4 +1,4 @@
-# pyNonogram
+# pyNonogram v1.0.0
 
 Framework for puzzle game *Nonogram*. It was made thinking about projects that aim to solve puzzles. I wanted to create comprehensive library that would take some work of nonogram developers' shoulders.
 
