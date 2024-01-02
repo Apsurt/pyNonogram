@@ -40,6 +40,8 @@ class NonogramGrid(np.ndarray):
         :type value: int
         """
         #Swappped x and y because of numpy array indexing, y is row, x is column. Holds for all methods.
+        if value not in [-1,0,1]:
+            raise ValueError('Value must be -1, 0 or 1')
         self[y,x] = value
     
     def get_cell(self, x: int, y: int) -> int:

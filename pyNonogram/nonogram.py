@@ -319,5 +319,3 @@ class Nonogram:
             row_str = row_str.replace('1', u'\u2588'*col_space)
             
             print(row_str)
-
-NonogramType = Union[Nonogram, object]
