@@ -6,7 +6,6 @@
 **/lib
 **/*.egg-info
 **/share
-**/tests
 **/.pytest_cache
 
 **/pyvenv.cfg
