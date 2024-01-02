@@ -63,7 +63,11 @@ For more elaborate examples check out [GitHub](https://github.com/Apsurt/pyNonog
 
 ## Contributing
 
-TBA
+All contributions are welcome. Just keep in mind agenda of this package, lightweight framework. Before creating pull request remember to run tests via:
+```
+python setup.py test
+```
+
 
 ## License
 
