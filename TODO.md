@@ -2,7 +2,6 @@
 
 ### Todo
 
-- [ ] Add tests
 - [ ] Add more examples
 
 ### In Progress
@@ -19,3 +18,4 @@
 - [x] Add basic examples
 - [x] Add documentation page
 - [x] Add errors
+- [x] Add tests
